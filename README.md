@@ -4,7 +4,7 @@ Challenge to practice exercises that consumes Github API
 
 ## Challenges
 
-### * `day 1`:
+### `day 1`:
   * create project
   * [design the profile screen by Jetpack Compose](https://github.com/lito-bumba/7daysCode/tree/compose)
 
