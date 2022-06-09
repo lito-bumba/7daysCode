@@ -6,7 +6,7 @@ Challenge to practice exercises that consumes Github API
 
 * `day 1`:
   * create project
-  * design the profile screen by Jetpack Compose
+  * [design the profile screen by Jetpack Compose](https://github.com/lito-bumba/7daysCode/tree/compose)
 
 ## Tools
 **Kotlin** |
