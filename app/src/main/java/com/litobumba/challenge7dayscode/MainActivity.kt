@@ -3,23 +3,23 @@ package com.litobumba.challenge7dayscode
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,12 +32,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Challenge7daysCodeTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    profileScreen()
+                    ProfileScreen()
                 }
             }
         }
@@ -45,29 +44,34 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun profileScreen() {
+fun ProfileScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(150.dp)
-                .clip(RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp))
-                .background(Color.DarkGray)
-        )
+        Box {
+            Box(
+                Modifier
+                    .align(Alignment.TopCenter)
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp))
+                    .background(Color.DarkGray)
+                    .height(150.dp)
+            )
+            Image(
+                painterResource(id = R.drawable.image_perfil),
+                contentDescription = "profile-picture",
+                modifier = Modifier
+                    .align(BottomCenter)
+                    .height(150.dp).width(150.dp)
+                    .offset(x = 0.dp, y = 75.dp)
+                    .clip(CircleShape)
+                    .border(2.dp, Color.Gray, CircleShape)
+            )
+        }
 
-        Image(
-            painterResource(id = R.drawable.image_perfil),
-            contentDescription = "profile-picture",
-            modifier = Modifier
-                .width(150.dp)
-                .height(150.dp)
-                .clip(CircleShape)
-                .align(CenterHorizontally)
-        )
+        Spacer(modifier = Modifier.size(75.dp))
 
         Column(
             modifier = Modifier
@@ -104,37 +108,37 @@ fun profileScreen() {
             )
             Spacer(modifier = Modifier.height(10.dp))
 
-            repository(
+            Repository(
                 "estudos",
                 "Repositorio apenas para Estudos realizado"
             )
 
-            repository(
+            Repository(
                 "repositorio 1",
                 "Repositorio apenas para teste"
             )
 
-            repository(
+            Repository(
                 "aboutme",
                 "Site sobre mim feito para imersão Hipers CSS"
             )
 
-            repository(
+            Repository(
                 "repositorio 1",
                 "Repositorio apenas para teste"
             )
 
-            repository(
+            Repository(
                 "aboutme",
                 "Site sobre mim feito para imersão Hipers CSS"
             )
 
-            repository(
+            Repository(
                 "repositorio 1",
                 "Repositorio apenas para teste"
             )
 
-            repository(
+            Repository(
                 "repositorio 4",
                 "Repositorio apenas para teste 4"
             )
@@ -144,13 +148,13 @@ fun profileScreen() {
 }
 
 @Composable
-fun repository(title: String, description: String) {
+fun Repository(title: String, description: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(34.dp)
             .clip(RoundedCornerShape(topStart = 5.dp, topEnd = 5.dp))
-            .background(Color.Gray)
+            .background(Color.DarkGray)
             .padding(9.dp, 4.dp),
         content = {
             Text(
@@ -172,6 +176,6 @@ fun repository(title: String, description: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun showProfileScreen() {
-    profileScreen()
+fun ShowProfileScreen() {
+    ProfileScreen()
 }
