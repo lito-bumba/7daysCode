@@ -15,6 +15,10 @@ Challenge to practice exercises that consumes Github API
   
   <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/day2.png" />
 
+### `day 3` :
+  * load image dynamicly by coil library
+  * allow internet access in app
+
 ## Tools
 **Kotlin** |
 **Jetpack Compose** |
