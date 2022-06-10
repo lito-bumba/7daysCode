@@ -17,7 +17,7 @@ Challenge to practice exercises that consumes Github API
 
 ### `day 3` :
   * load image dynamicly by coil library
-  * allow internet access in app
+  * allow app to access internet
 
 ## Tools
 **Kotlin** |
