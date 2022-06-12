@@ -1,6 +1,8 @@
 package com.litobumba.challenge7dayscode
 
+
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
@@ -18,9 +20,6 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,8 +29,12 @@ import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
-import coil.request.ImageRequest
 import com.litobumba.challenge7dayscode.ui.theme.Challenge7daysCodeTheme
+import com.litobumba.challenge7dayscode.webclient.Dto
+import com.litobumba.challenge7dayscode.webclient.Retrofit
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+
+                    val call = Retrofit().api().pegarUsuario("lito-bumba")
+                    call.enqueue(object : Callback<Dto?> {
+                        override fun onResponse(call: Call<Dto?>, response: Response<Dto?>) {
+                            response?.body()?.let { usuario ->
+                                Log.i("Rest API", "${usuario.name}\n${usuario.bio}")
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Dto?>, t: Throwable) {
+                            Log.e("Erro na Requisição", "${t?.message}")
+                        }
+
+                    })
+
                     ProfileScreen()
                 }
             }
@@ -66,7 +84,7 @@ fun ProfileScreen() {
                     .background(Color.DarkGray)
                     .height(150.dp)
             )
-            AsyncImage(
+            SubcomposeAsyncImage(
                 model = "https://avatars.githubusercontent.com/u/90806272?v=4",
                 contentDescription = "profile-picture",
                 modifier = Modifier
@@ -76,7 +94,14 @@ fun ProfileScreen() {
                     .offset(x = 0.dp, y = 75.dp)
                     .clip(CircleShape)
                     .border(2.dp, Color.Gray, CircleShape)
-            )
+            ){
+                val state = painter.state
+                if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error)
+                    CircularProgressIndicator(
+                        color = Color.Gray, strokeWidth = 20.dp,
+                        modifier = Modifier.background(Color.White))
+                else SubcomposeAsyncImageContent()
+            }
         }
 
         Spacer(modifier = Modifier.size(75.dp))
