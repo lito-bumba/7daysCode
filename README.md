@@ -8,12 +8,12 @@ Challenge to practice exercises that consumes Github API
   * create project
   * [design the profile screen by Jetpack Compose](https://github.com/lito-bumba/7daysCode/tree/compose)
   
-  <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/day1.png" />
+  <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/day1.png" />
   
 ### `day 2` :
   * adjusting the profile picture and colors
   
-  <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/day2.png" />
+  <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/day2.png" />
 
 
 ### `day 3` :
@@ -28,7 +28,7 @@ Challenge to practice exercises that consumes Github API
 ### `day 5` :
   * show the user data from Api in profile screen
 
-## [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
+### [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
 ## Tools
 **Kotlin** |
 **Jetpack Compose** |
