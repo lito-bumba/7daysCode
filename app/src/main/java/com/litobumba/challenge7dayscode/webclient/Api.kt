@@ -7,6 +7,6 @@ import retrofit2.http.Path
 interface Api {
 
     @GET("users/{NOME_DO_USUARIO}")
-    fun pegarUsuario(@Path("NOME_DO_USUARIO") NOME_DO_USUARIO: String): Call<Dto>
+    suspend fun pegarUsuario(@Path("NOME_DO_USUARIO") NOME_DO_USUARIO: String): Dto
 
 }

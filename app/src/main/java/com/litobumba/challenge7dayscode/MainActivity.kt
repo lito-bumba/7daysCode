@@ -14,6 +14,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
@@ -25,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
@@ -32,6 +35,7 @@ import coil.compose.SubcomposeAsyncImageContent
 import com.litobumba.challenge7dayscode.ui.theme.Challenge7daysCodeTheme
 import com.litobumba.challenge7dayscode.webclient.Dto
 import com.litobumba.challenge7dayscode.webclient.Retrofit
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,28 +43,14 @@ import retrofit2.Response
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             Challenge7daysCodeTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
-                    val call = Retrofit().api().pegarUsuario("lito-bumba")
-                    call.enqueue(object : Callback<Dto?> {
-                        override fun onResponse(call: Call<Dto?>, response: Response<Dto?>) {
-                            response?.body()?.let { usuario ->
-                                Log.i("Rest API", "${usuario.name}\n${usuario.bio}")
-                            }
-                        }
-
-                        override fun onFailure(call: Call<Dto?>, t: Throwable) {
-                            Log.e("Erro na Requisição", "${t?.message}")
-                        }
-
-                    })
-
-                    ProfileScreen()
+                    ProfileScreen("lito-bumba")
                 }
             }
         }
@@ -68,7 +58,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(userName: String, repository: Repository = Repository()) {
+
+    val foundedUser by repository.pegarUsuario(userName).collectAsState(initial = null)
+    foundedUser?.let {
+        Log.i("API_DATA", it.toString())
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -85,7 +81,7 @@ fun ProfileScreen() {
                     .height(150.dp)
             )
             SubcomposeAsyncImage(
-                model = "https://avatars.githubusercontent.com/u/90806272?v=4",
+                model = foundedUser?.avatar_url,
                 contentDescription = "profile-picture",
                 modifier = Modifier
                     .align(BottomCenter)
@@ -112,13 +108,13 @@ fun ProfileScreen() {
                 .padding(horizontal = 16.dp)
         ) {
             Text(
-                text = "Lito Bumba",
+                text = foundedUser?.name ?: "Name",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.align(CenterHorizontally)
             )
             Text(
-                text = "lito-bumba",
+                text = foundedUser?.login ?: "user-name",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.align(CenterHorizontally)
@@ -126,7 +122,7 @@ fun ProfileScreen() {
             Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = "Android Developer | Kotlin Language",
+                text = foundedUser?.bio ?: "Bio",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
                 textAlign = TextAlign.Center,
@@ -210,5 +206,5 @@ fun Repository(title: String, description: String) {
 @Preview(showBackground = true)
 @Composable
 fun ShowProfileScreen() {
-    ProfileScreen()
+    ProfileScreen("lito-bumba")
 }
