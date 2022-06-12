@@ -20,10 +20,15 @@ Challenge to practice exercises that consumes Github API
   * load image dynamicly by coil library
   * allow app to access internet
 
+
 ### `day 4` :
   * add progress bar when the image no found or it's loading
-  * get user information by Github Api
+  * get user information by github api
 
+### `day 5` :
+  * show the user data from Api in profile screen
+
+## [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
 ## Tools
 **Kotlin** |
 **Jetpack Compose** |
