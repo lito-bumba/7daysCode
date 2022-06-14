@@ -28,6 +28,9 @@ Challenge to practice exercises that consumes Github API
 ### `day 5` :
   * show the user data from Api in profile screen
 
+### `day 6` :
+  * refatoring the code
+
 ### [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
 ## Tools
 **Kotlin** |
