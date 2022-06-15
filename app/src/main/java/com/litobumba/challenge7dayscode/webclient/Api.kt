@@ -6,7 +6,10 @@ import retrofit2.http.Path
 
 interface Api {
 
-    @GET("users/{NOME_DO_USUARIO}")
-    suspend fun pegarUsuario(@Path("NOME_DO_USUARIO") NOME_DO_USUARIO: String): Dto
+    @GET("users/{user}")
+    suspend fun getUser(@Path("user") user: String): Dto
+
+    @GET("users/{user}/repos")
+    suspend fun getUserRepos(@Path("user") user: String): List<DtoRepos>
 
 }
