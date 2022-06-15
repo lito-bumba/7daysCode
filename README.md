@@ -31,6 +31,9 @@ Challenge to practice exercises that consumes Github API
 ### `day 6` :
   * refatoring the code
 
+### `day 7` :
+  * bring the repositories
+
 ### [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
 ## Tools
 **Kotlin** |
