@@ -9,7 +9,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,48 +18,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImagePainter
-import coil.compose.SubcomposeAsyncImage
-import coil.compose.SubcomposeAsyncImageContent
-import com.litobumba.challenge7dayscode.Repository
+import coil.compose.AsyncImage
 import com.litobumba.challenge7dayscode.ui.theme.ColorPrimary
 import com.litobumba.challenge7dayscode.webclient.DtoRepos
 
 @Preview(showBackground = true)
 @Composable
 fun ShowProfileScreen() {
-    ProfileDetail(
+    ProfileScreen(
         state = ProfileUiState(
             userName = "lito-bumba",
             image = "https://avatars.githubusercontent.com/u/90806272?v=4",
             name = "Lito Bumba",
-            bio = "Android Developer"
+            bio = "Android Developer",
+            repos = listOf(
+                DtoRepos("Repositório Teste 1", "Testando Repositório"),
+                DtoRepos("Repositório Teste 2", "Testando Repositório"),
+                DtoRepos("Repositório Teste 3", "Testando Repositório")
+            )
         )
     )
 }
 
-data class ProfileUiState(
-    val userName: String = "",
-    val image: String = "",
-    val name: String = "",
-    val bio: String = "",
-    val repos: List<DtoRepos> = emptyList()
-)
-
 @Composable
-fun ProfileScreen(user: String, repository: Repository = Repository()) {
-
-    val uiState = repository.uiState
-
-    LaunchedEffect(null) {
-        repository.getUser(user)
-    }
-
-    ProfileDetail(uiState)
-}
-
-@Composable
-fun ProfileDetail(state: ProfileUiState) {
+fun ProfileScreen(state: ProfileUiState) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -69,6 +50,7 @@ fun ProfileDetail(state: ProfileUiState) {
             item {
                 ProfileHeader(state = state)
             }
+
             item {
                 if (state.repos.isNotEmpty()) {
                     Text(
@@ -100,7 +82,7 @@ fun ProfileHeader(state: ProfileUiState) {
                 .background(ColorPrimary)
                 .height(150.dp)
         )
-        SubcomposeAsyncImage(
+        AsyncImage(
             model = state.image,
             contentDescription = "profile-picture",
             modifier = Modifier
@@ -110,18 +92,7 @@ fun ProfileHeader(state: ProfileUiState) {
                 .offset(x = 0.dp, y = 75.dp)
                 .clip(CircleShape)
                 .border(2.dp, Color.Gray, CircleShape)
-        ) {
-            val state = painter.state
-            if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
-                Spacer(modifier = Modifier.height(10.dp))
-                CircularProgressIndicator(
-                    color = Color.Gray, strokeWidth = 15.dp,
-                    modifier = Modifier
-                        .background(Color.White)
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-            } else SubcomposeAsyncImageContent()
-        }
+        )
     }
     Spacer(modifier = Modifier.size(75.dp))
 
@@ -179,4 +150,5 @@ fun RepositoryItem(repo: DtoRepos) {
             }
         }
     }
+
 }
