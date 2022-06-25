@@ -1,38 +1,25 @@
-# 7DaysOfCode
+# DevHub
 
-Challenge to practice exercises that consumes Github API
+When I started this project, it was just a challenge, but after do that, I added some feature beyond the challenge
+You can see the [Readme of the challenge](https://github.com/lito-bumba/7daysCode/blob/main/READMEday.md)
 
-## Challenges
-
-### `day 1` :
-  * create project
-  * [design the profile screen by Jetpack Compose](https://github.com/lito-bumba/7daysCode/tree/compose)
+## Screens
   
-  <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/day1.png" />
-  
-### `day 2` :
-  * adjusting the profile picture and colors
-  
-  <img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/day2.png" />
+### `En` :
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_1.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_2.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_3.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_4.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_5.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_4.png" /> &ensp; &ensp;
 
 
-### `day 3` :
-  * load image dynamicly by coil library
-  * allow app to access internet
+### `Pt` :
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_1.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_2.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_3.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_5.png" /> &ensp; &ensp;
 
-
-### `day 4` :
-  * add progress bar when the image no found or it's loading
-  * get user information by github api
-
-### `day 5` :
-  * show the user data from Api in profile screen
-
-### `day 6` :
-  * refatoring the code
-
-### `day 7` :
-  * bring the repositories
 
 ### [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
 ## Tools
