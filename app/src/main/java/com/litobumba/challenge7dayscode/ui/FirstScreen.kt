@@ -2,6 +2,7 @@ package com.litobumba.challenge7dayscode.ui
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -18,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -39,7 +39,7 @@ fun FirstScreen(viewModel: AppViewModel, navController: NavController) {
     BackdropScaffold(
         appBar = { },
         scaffoldState = scaffoldState,
-        gesturesEnabled = false,
+        gesturesEnabled = true,
         snackbarHost = {
             SnackbarHost(it) { data ->
                 Snackbar(
@@ -76,28 +76,30 @@ private fun BackLayer() {
         Text(
             text = "DevHub",
             fontSize = 60.sp,
+            fontStyle = FontStyle.Italic,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = "Github Profile Finder",
+            text = stringResource(R.string.isAnApp),
             fontSize = 20.sp,
-            color = ColorPrimary
+            color = ColorPrimary,
+            modifier = Modifier.fillMaxWidth(.8f)
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "by:")
-            Spacer(modifier = Modifier.width(15.dp))
+            Text(text = stringResource(R.string.by))
+            Spacer(modifier = Modifier.width(10.dp))
             Text(
-                text = "Lito Bumba", fontSize = 40.sp,
+                text = "Lito Bumba", fontSize = 30.sp,
                 style = TextStyle(
-                    textDecoration = TextDecoration.Underline,
-                    letterSpacing = 5.sp
+                    fontWeight = FontWeight.Bold,
+                    textDecoration = TextDecoration.Underline
                 ),
                 modifier = Modifier.clickable {
                     val webIntent = Intent(

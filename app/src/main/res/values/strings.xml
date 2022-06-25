@@ -8,4 +8,9 @@
     <string name="internetConnection">Check your Internet Connection</string>
     <string name="parameterError">Parameter Error</string>
     <string name="usernameEmpty">The username can\'t be empty</string>
+    <string name="isAnApp">
+        is an app that by that you may find a Github Profile, and see
+        the public repositories of this user
+    </string>
+    <string name="by">by:</string>
 </resources>
