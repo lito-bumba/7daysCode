@@ -34,7 +34,7 @@ import coil.compose.AsyncImage
 import com.litobumba.challenge7dayscode.AppViewModel
 import com.litobumba.challenge7dayscode.R
 import com.litobumba.challenge7dayscode.ui.theme.ColorPrimary
-import com.litobumba.challenge7dayscode.webclient.DtoRepos
+import com.litobumba.challenge7dayscode.data.api.DtoRepos
 
 @Preview(showBackground = true)
 @Composable

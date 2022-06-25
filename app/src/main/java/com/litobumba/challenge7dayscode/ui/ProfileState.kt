@@ -1,6 +1,6 @@
 package com.litobumba.challenge7dayscode.ui
 
-import com.litobumba.challenge7dayscode.webclient.DtoRepos
+import com.litobumba.challenge7dayscode.data.api.DtoRepos
 
 data class ProfileUiState(
     val userName: String = "",

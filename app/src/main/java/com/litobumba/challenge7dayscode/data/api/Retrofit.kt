@@ -1,4 +1,4 @@
-package com.litobumba.challenge7dayscode.webclient
+package com.litobumba.challenge7dayscode.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

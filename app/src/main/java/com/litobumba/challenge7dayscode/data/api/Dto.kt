@@ -1,4 +1,4 @@
-package com.litobumba.challenge7dayscode.webclient
+package com.litobumba.challenge7dayscode.data.api
 
 import com.litobumba.challenge7dayscode.ui.ProfileUiState
 
@@ -9,7 +9,7 @@ data class Dto(
     val name: String
 )
 
-fun Dto.DtoToUiState(): ProfileUiState {
+fun Dto.dtoToUiState(): ProfileUiState {
     return ProfileUiState(
         userName = login,
         image = avatar_url,

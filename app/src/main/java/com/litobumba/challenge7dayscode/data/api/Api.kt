@@ -1,6 +1,5 @@
-package com.litobumba.challenge7dayscode.webclient
+package com.litobumba.challenge7dayscode.data.api
 
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
