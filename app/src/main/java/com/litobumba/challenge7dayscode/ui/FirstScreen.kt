@@ -2,7 +2,6 @@ package com.litobumba.challenge7dayscode.ui
 
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -12,28 +11,35 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.litobumba.challenge7dayscode.UseCase
+import com.litobumba.challenge7dayscode.AppViewModel
+import com.litobumba.challenge7dayscode.R
+import com.litobumba.challenge7dayscode.ui.Components.LoadingButton
 import com.litobumba.challenge7dayscode.ui.theme.ColorPrimary
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun FirstScreen(viewModel: UseCase, navController: NavController) {
+fun FirstScreen(viewModel: AppViewModel, navController: NavController) {
 
     val scaffoldState = rememberBackdropScaffoldState(BackdropValue.Concealed)
 
     BackdropScaffold(
         appBar = { },
         scaffoldState = scaffoldState,
+        gesturesEnabled = false,
         snackbarHost = {
             SnackbarHost(it) { data ->
                 Snackbar(
@@ -107,14 +113,13 @@ private fun BackLayer() {
 
 @Composable
 private fun FrontLayer(
-    viewModel: UseCase,
+    viewModel: AppViewModel,
     navController: NavController,
     snackbarHostState: SnackbarHostState
 ) {
-    val context = LocalContext.current
-
     val scope = rememberCoroutineScope()
     var userName by remember { mutableStateOf("") }
+    var userError by remember { mutableStateOf(false) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -135,7 +140,7 @@ private fun FrontLayer(
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = "Let's find a Github Profile",
+            text = stringResource(R.string.letsFind),
             fontSize = 20.sp,
             color = Color.White
         )
@@ -143,11 +148,9 @@ private fun FrontLayer(
 
         OutlinedTextField(
             value = userName,
-            onValueChange = {
-                userName = it
-            },
+            onValueChange = { userName = it },
             singleLine = true,
-            label = { Text("User Name", fontSize = 18.sp) },
+            label = { Text(stringResource(R.string.userName), fontSize = 18.sp) },
             textStyle = TextStyle(
                 color = Color.White,
                 fontSize = 20.sp
@@ -155,31 +158,45 @@ private fun FrontLayer(
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 textColor = Color.White,
                 cursorColor = Color.White,
-                focusedLabelColor = Color.White,
+                focusedLabelColor = if (userError) Color.Red else Color.White,
                 unfocusedLabelColor = Color.White,
                 backgroundColor = Color.Transparent,
                 unfocusedBorderColor = Color.White,
                 focusedBorderColor = Color.White
             ),
+            isError = userError,
             modifier = Modifier
                 .fillMaxWidth(.9F)
         )
+
+        if (userError){
+            Text(
+                text = stringResource(R.string.usernameEmpty),
+                color = Color.Red,
+                textAlign = TextAlign.End,
+                modifier = Modifier.fillMaxWidth(.9F)
+            )
+        }
 
         Spacer(modifier = Modifier.height(60.dp))
 
 
         var loading by remember { mutableStateOf(false) }
+        val context = LocalContext.current
 
         LoadingButton(
             onClick = {
+
                 if (userName.isBlank()) {
+                    userError = true
                     return@LoadingButton
                 }
 
                 loading = true
+                userError = false
 
                 scope.launch {
-                    viewModel.getUser(userName).collect { state ->
+                    viewModel.getUser(context, userName).collect { state ->
 
                         loading = false
 
@@ -193,11 +210,6 @@ private fun FrontLayer(
                             return@collect
                         }
 
-                        /*Toast.makeText(
-                            context,
-                            state.profile.toString(),
-                            Toast.LENGTH_SHORT
-                        ).show()*/
                         navController.navigate("profileScreen")
                     }
                 }
@@ -214,7 +226,7 @@ private fun FrontLayer(
                 contentColor = ColorPrimary
             )
         ) {
-            Text(text = "Enter", fontSize = 18.sp)
+            Text(text = stringResource(R.string.enter), fontSize = 18.sp)
         }
 
     }

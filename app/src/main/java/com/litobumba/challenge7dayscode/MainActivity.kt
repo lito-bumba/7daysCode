@@ -12,17 +12,15 @@ import androidx.navigation.compose.rememberNavController
 import com.litobumba.challenge7dayscode.ui.FirstScreen
 import com.litobumba.challenge7dayscode.ui.ProfileScreen
 import com.litobumba.challenge7dayscode.ui.ProfileUiState
-import com.litobumba.challenge7dayscode.webclient.DtoRepos
-import com.litobumba.challenge7dayscode.webclient.dtoToReposList
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<UseCase>()
+    private val viewModel by viewModels<AppViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            
+
             val navController = rememberNavController()
             val profile: ProfileUiState by viewModel.profile.observeAsState(ProfileUiState())
 
@@ -33,9 +31,8 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(route = "profileScreen") {
-                    ProfileScreen(profile)
+                    ProfileScreen(viewModel, navController, profile)
                 }
-
             }
 
         }

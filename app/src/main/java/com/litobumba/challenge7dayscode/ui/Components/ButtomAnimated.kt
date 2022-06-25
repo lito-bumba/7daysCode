@@ -1,4 +1,4 @@
-package com.litobumba.challenge7dayscode.ui
+package com.litobumba.challenge7dayscode.ui.Components
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
