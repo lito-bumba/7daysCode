@@ -6,19 +6,19 @@ You can see the [Readme of the challenge](https://github.com/lito-bumba/7daysCod
 ## Screens
   
 ### `En` :
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_1.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_2.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_3.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_4.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/en_img_5.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_4.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/en_img_1.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/en_img_2.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/en_img_3.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/en_img_4.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/en_img_5.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/pt_img_4.png" /> &ensp; &ensp;
 
 
 ### `Pt` :
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_1.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_2.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_3.png" /> &ensp; &ensp;
-<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/compose/Screenshots/pt_img_5.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/pt_img_1.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/pt_img_2.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/pt_img_3.png" /> &ensp; &ensp;
+<img height="400" src="https://github.com/lito-bumba/7daysCode/blob/dev/Screenshots/pt_img_5.png" /> &ensp; &ensp;
 
 
 ### [The Project Code](https://github.com/lito-bumba/7daysCode/tree/dev)
