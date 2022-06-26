@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DevHub</string>
+    <string name="letsFind">Vamos encontrar um Perfil do GitHub</string>
+    <string name="repositories">Repositórios Públicos</string>
+    <string name="enter">Entrar</string>
+    <string name="userName">Nome do Usuário</string>
+    <string name="userNotFound">Usuário não Encontrado</string>
+    <string name="internetConnection">Verifica a tua conecção de internet</string>
+    <string name="parameterError">Erro no Parametro</string>
+    <string name="usernameEmpty">O nome de usuário não pode estar vázio</string>
+    <string name="isAnApp">
+        é um aplicativo que por meio dele, você pode encontrar um perfil do Github,
+        e ver os repositórios públicos do mesmo usuário
+    </string>
+    <string name="by">por:</string>
+</resources>
